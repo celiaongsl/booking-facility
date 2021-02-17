@@ -3,22 +3,19 @@ class Booking < ApplicationRecord
     belongs_to :user
     belongs_to :room
 
-    validate :conflicting_bookings
+    validate :reservations_must_not_overlap
 
-    def booking_range
-        s=Time.local(start_timestamp.year, start_timestamp.month, start_timestamp.day, start_timestamp.hour, start_timestamp.min, start_timestamp.sec)
-        e=Time.local(end_timestamp.year, end_timestamp.month, end_timestamp.day, end_timestamp.hour, end_timestamp.min, end_timestamp.sec)
-        s..e 
-      end
-    
-    
-      private
-      def conflicting_bookings
-    #     @bookings = Booking.all(:conditions => { :start_timestamp => start_timestamp, :end_timestamp => end_timestamp, :room_id => room_id})
-        @bookings = Booking.where(room_id: room_id, start_timestamp: start_timestamp, end_timestamp: end_timestamp)
-        # .exists?(conditions = :none)
-        # errors.add_to_base("Booking Conflict") if @bookings.any? {|booking| booking.booking_range.overlaps? booking_range}
-        errors.add :base, 'Booking Conflict' if @bookings.any? {|booking| booking.booking_range.overlaps? booking_range}
-      end
+    private
+
+    def reservations_must_not_overlap
+        return if self
+                    .class
+                    .where.not(id: id)
+                    .where(room_id: room_id)
+                    .where('start_timestamp < ? AND end_timestamp > ?', end_timestamp, start_timestamp)
+                    .none?
+
+        errors.add(:messages, 'Overlapping room booking exists')
+    end
 
 end
