@@ -18,6 +18,8 @@ Hello.propTypes = {
   name: PropTypes.string
 }
 
+// Things I want to try and include: Filtering by Floor, Features/Assets and Capacity
+// Filtering by date&time availability (how ah LOL)
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Hello name="React" />,
