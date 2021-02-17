@@ -74,7 +74,14 @@ bookings = Booking.create([
         start_timestamp: DateTime.strptime("01/17/2021 12:00", "%m/%d/%Y %H:%M"),
         end_timestamp: DateTime.strptime("01/17/2021 13:00", "%m/%d/%Y %H:%M"),
         user: users.first,
-        room: rooms.first,
+        room: rooms.fourth,
+    }, {
+        title: 'Nap Time',
+        description: 'Please do not disturb',
+        start_timestamp: DateTime.strptime("01/19/2021 13:00", "%m/%d/%Y %H:%M"),
+        end_timestamp: DateTime.strptime("01/19/2021 13:30", "%m/%d/%Y %H:%M"),
+        user: users.second,
+        room: rooms.third,
     }
 ])
 
