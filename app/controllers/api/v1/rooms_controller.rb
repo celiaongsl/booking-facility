@@ -10,14 +10,19 @@ module Api
                   
                 # rooms = Room.all
                 rooms = Room.filter(params.slice(:floor, :capacity, :room_type,))
-                render json: RoomSerializer.new(rooms).serialized_json
+                render json: RoomSerializer.new(rooms, options).serialized_json
             end 
 
             def show
                 # Show based on slug
                 room = Room.find_by(slug: params[:slug])
-                render json: RoomSerializer.new(room).serialized_json
+                render json: RoomSerializer.new(room, options).serialized_json
             end
+
+            private
+                def options
+                    @options ||= { include: %i[bookings] }
+                end
         end
     end
 end

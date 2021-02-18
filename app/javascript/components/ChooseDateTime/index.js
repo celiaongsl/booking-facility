@@ -1,71 +1,66 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
 
 import { prettyDate2 } from "../../utils/helper";
 import { time } from "../../utils/time_constant";
 
+import DatePicker from "../DatePicker";
+import SelectDropDown from "../SelectDropDown";
+import { setEndDatetime, setStartDatetime } from "../../state/action";
+
 const useStyles = makeStyles({
   container: {
     height: 40,
-  },
-  formControl: {
-    margin: 10,
-    minWidth: 120,
   },
 });
 
 const ChooseDateTime = () => {
   const start = useSelector((state) => state.startDateTime);
   const end = useSelector((state) => state.endDateTime);
+  const dispatch = useDispatch();
+
+  const [selectedDate, setSelectedDate] = React.useState(start);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    // For the date, combine startTime and endTime
+  };
+
   const [startTime, setStartTime] = useState(prettyDate2(start));
   const [endTime, setEndTime] = useState(prettyDate2(end));
 
   const classes = useStyles();
 
+  useEffect(() => {
+    // Whenever date or time changes, combine them together and send to store
+    // e.g. startDateTime = selectedDate + startTime
+
+    const dateString = selectedDate.toString().substring(0, 15);
+    const localeString = selectedDate.toString().substring(25);
+    let startDateTime = dateString + " " + startTime + " " + localeString;
+    let endDateTime = dateString + " " + endTime + " " + localeString;
+
+    dispatch(setStartDatetime(startDateTime));
+    dispatch(setEndDatetime(endDateTime));
+    //  REMINDER: Double check that startTime and endTime are not wrong
+  }, [selectedDate, startTime, endTime]);
+
   return (
     <div className={classes.container}>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Start Time</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={startTime}
-          onChange={(e) => setStartTime(e.target.value)}
-        >
-          {time.map((item) => {
-            return (
-              <MenuItem key={item.value} value={item.value}>
-                {item.label}
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">End Time</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={endTime}
-          onChange={(e) => setEndTime(e.target.value)}
-        >
-          {time.map((item) => {
-            return (
-              <MenuItem key={item.value} value={item.value}>
-                {item.label}
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
-      {/* Set default data to be today And default time to be nearest whole hour
-      from now */}
+      <DatePicker value={selectedDate} onChange={handleDateChange} />
+      <SelectDropDown
+        label="Start Time"
+        onChange={setStartTime}
+        value={startTime}
+        list={time}
+      />
+      <SelectDropDown
+        label="End Time"
+        onChange={setEndTime}
+        value={endTime}
+        list={time}
+      />
     </div>
   );
 };

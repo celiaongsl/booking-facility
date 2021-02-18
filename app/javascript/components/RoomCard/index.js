@@ -62,7 +62,7 @@ const RoomCard = (props) => {
           size="large"
           color="primary"
           className={classes.buttonRoot}
-          onClick={handleClickOpen}
+          onClick={() => handleClickOpen(props.room)}
         >
           Book Now
         </Button>

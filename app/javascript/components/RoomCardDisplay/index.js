@@ -10,8 +10,10 @@ import BookingPopUp from "../BookingPopUp";
 const RoomCardDisplay = (props) => {
   const { roomsData } = props;
   const [open, setOpen] = React.useState(false);
+  const [selectedRoomData, setSelectedRoomData] = React.useState({});
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (roomData) => {
+    setSelectedRoomData(roomData);
     setOpen(true);
   };
 
@@ -39,7 +41,13 @@ const RoomCardDisplay = (props) => {
             </Grid>
           );
         })}
-      {open && <BookingPopUp open={open} handleClose={handleClose} />}
+      {open && (
+        <BookingPopUp
+          open={open}
+          handleClose={handleClose}
+          selectedRoomData={selectedRoomData}
+        />
+      )}
     </React.Fragment>
   );
 };
