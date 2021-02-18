@@ -35,3 +35,5 @@ export const roomTypeToImageList = {
 };
 
 export const apiURL = "/api/v1";
+
+
