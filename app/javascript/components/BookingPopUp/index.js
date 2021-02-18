@@ -13,6 +13,7 @@ import SelectDropDown from "../SelectDropDown";
 
 import { prettyDate2 } from "../../utils/helper";
 import { time } from "../../utils/time_constant";
+import DatePicker from "../DatePicker";
 
 const BookingPopUp = (props) => {
   const {
@@ -22,9 +23,14 @@ const BookingPopUp = (props) => {
   } = props;
   const start = useSelector((state) => state.startDateTime);
   const end = useSelector((state) => state.endDateTime);
+  const date = new Date(start).toLocaleDateString();
   const [startTime, setStartTime] = useState(prettyDate2(start));
   const [endTime, setEndTime] = useState(prettyDate2(end));
 
+  const [selectedDate, setSelectedDate] = React.useState(start);
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
   // Using room_id, generate the bookings for (1) room_id (2) on the date itself
 
   // act nvm la lol, just do a save and a pop-up if something was wrong
@@ -40,7 +46,6 @@ const BookingPopUp = (props) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Date: <br />
             Capacity: {selectedRoomData.attributes.capacity} <br />
             Floor: {selectedRoomData.attributes.floor} <br />
           </DialogContentText>
@@ -56,13 +61,12 @@ const BookingPopUp = (props) => {
             value={endTime}
             list={time}
           />
+          <br/>
+          <DatePicker value={selectedDate} onChange={handleDateChange} />{" "}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Disagree
-          </Button>
           <Button onClick={handleClose} color="primary" autoFocus>
-            Agree
+            Confirm Booking
           </Button>
         </DialogActions>
       </Dialog>

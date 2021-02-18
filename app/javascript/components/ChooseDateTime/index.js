@@ -24,7 +24,6 @@ const ChooseDateTime = () => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    // For the date, combine startTime and endTime
   };
 
   const [startTime, setStartTime] = useState(prettyDate2(start));
@@ -35,11 +34,10 @@ const ChooseDateTime = () => {
   useEffect(() => {
     // Whenever date or time changes, combine them together and send to store
     // e.g. startDateTime = selectedDate + startTime
-
     const dateString = selectedDate.toString().substring(0, 15);
     const localeString = selectedDate.toString().substring(25);
-    let startDateTime = dateString + " " + startTime + " " + localeString;
-    let endDateTime = dateString + " " + endTime + " " + localeString;
+    let startDateTime = new Date(dateString + " " + startTime + " " + localeString);
+    let endDateTime = new Date(dateString + " " + endTime + " " + localeString);
 
     dispatch(setStartDatetime(startDateTime));
     dispatch(setEndDatetime(endDateTime));
