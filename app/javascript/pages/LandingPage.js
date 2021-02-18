@@ -30,14 +30,14 @@ const LandingPage = () => {
 
   return (
     <div>
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Header />
         </Grid>
         <Grid item md={3}>
           <Filter />
         </Grid>
-        <Grid item md={9} container spacing={2}>
+        <Grid item md={9} container spacing={4}>
           <RoomCardDisplay roomsData={rooms}/>
         </Grid>
       </Grid>

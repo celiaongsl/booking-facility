@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,8 +8,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import { assetToIconList } from "../../utils/constant";
-
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -17,40 +15,50 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
+  iconDiv: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "10px 0px",
+    width: '40%',
+    height: 44,
+  },
+  buttonRoot: {
+      width: '100%'
+  }
 });
+
 const RoomCard = (props) => {
-    const {name} = props.room.attributes
-    console.log(props)
-    console.log("hello props??")
+  const { name, capacity, floor } = props.room.attributes;
+  const { imageURL, iconList } = props;
   const classes = useStyles();
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
+        <CardMedia className={classes.media} image={imageURL} title={name} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          <Typography>{capacity} pax</Typography>
+          <Typography variant="body2">
+            Floor {floor}
           </Typography>
+          <div className={classes.iconDiv}>
+            {iconList &&
+              iconList.map((icon, index) => (
+                <Fragment key={index}>{icon}</Fragment>
+              ))}
+          </div>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
+      <CardActions disableSpacing >
+        <Button size="large" color="primary" className={classes.buttonRoot}>
+          Book Now
         </Button>
       </CardActions>
     </Card>
   );
 };
 
-export default RoomCard
+export default RoomCard;

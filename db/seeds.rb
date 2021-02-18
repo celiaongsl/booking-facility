@@ -25,11 +25,11 @@ rooms = Room.create([
         {
             name: "Sleeping Pod 1",
             floor: 4,
-            capacity: 30,
+            capacity: 1,
             room_type: "sleeping_pod",
             assets: {
-                projector: true,
-                whiteboard: true,
+                projector: false,
+                whiteboard: false,
                 power_outlets: true,
                 tv: false
             },},
@@ -56,7 +56,17 @@ rooms = Room.create([
             power_outlets: true,
             tv: true,
         }
-}
+}, {
+    name: "Sleeping Pod 2",
+    floor: 4,
+    capacity: 1,
+    room_type: "sleeping_pod",
+    assets: {
+        projector: false,
+        whiteboard: false,
+        power_outlets: true,
+        tv: false
+    },},
 ])
 
 users = User.create([
