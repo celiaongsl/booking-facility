@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
 
     validate :bookings_must_not_overlap
 
-    private
+    # private
 
     def bookings_must_not_overlap
         return if self

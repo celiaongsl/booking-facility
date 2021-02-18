@@ -40,10 +40,6 @@ module Api
             def booking_params
                 params.require(:booking).permit(:title, :description, :start_timestamp, :end_timestamp, :user_id, :room_id)
             end
-
-            # def options
-            #     @options ||= { include: %i[users, rooms]}
-            # end
         end
     end
 end

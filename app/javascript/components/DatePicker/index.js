@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 });
 
 const DatePicker = (props) => {
-  const { value, onChange } = props;
+  const { value, onChange, style } = props;
   const classes = useStyles();
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -24,13 +24,14 @@ const DatePicker = (props) => {
         variant="inline"
         format="MM/dd/yyyy"
         margin="normal"
-        label="MM/dd/yyyy"
+        label="Booking Date"
         id="date-picker-inline"
         value={value}
         onChange={onChange}
         KeyboardButtonProps={{
           "aria-label": "change date",
         }}
+        style={style}
       />
     </MuiPickersUtilsProvider>
   );

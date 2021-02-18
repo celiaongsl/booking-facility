@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
+import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 
 import Button from "@material-ui/core/Button";
@@ -15,6 +16,13 @@ import SelectDropDown from "../SelectDropDown";
 import { prettyDate2 } from "../../utils/helper";
 import { time } from "../../utils/time_constant";
 import DatePicker from "../DatePicker";
+import { Typography } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  textfieldRoot: {
+    width: "100%",
+  },
+});
 
 const BookingPopUpForm = (props) => {
   const {
@@ -23,7 +31,10 @@ const BookingPopUpForm = (props) => {
     handleSubmit = () => null,
     booking,
     handleChange = () => null,
+    errorMessage = "",
   } = props;
+  const classes = useStyles();
+
   const start = useSelector((state) => state.startDateTime);
   const end = useSelector((state) => state.endDateTime);
   const [startTime, setStartTime] = useState(prettyDate2(start));
@@ -59,19 +70,19 @@ const BookingPopUpForm = (props) => {
             <TextField
               id="booking-title"
               label="Title"
-              required
               name="title"
               value={booking.title}
               onChange={handleChange}
-              // onBlur={handleChange}
-            /><br/>
+              className={classes.textfieldRoot}
+            />
+            <br />
             <TextField
               id="booking-description"
               label="Description"
               name="description"
               value={booking.description}
               onChange={handleChange}
-              // onBlur={handleChange}
+              className={classes.textfieldRoot}
             />
             <DialogContentText id="alert-dialog-description">
               {/* Capacity: {selectedRoomData.attributes.capacity} <br />
@@ -90,7 +101,16 @@ const BookingPopUpForm = (props) => {
               list={time}
             />
             <br />
-            <DatePicker value={selectedDate} onChange={handleDateChange} />{" "}
+            <DatePicker
+              value={selectedDate}
+              onChange={handleDateChange}
+              style={{ width: "100%" }}
+            />{" "}
+            {errorMessage && (
+              <div style={{ color: "red", wordWrap: "break-word" }}>
+                <Typography>{errorMessage}</Typography>
+              </div>
+            )}
           </DialogContent>
           <DialogActions style={{ justifyContent: "space-between" }}>
             <Button onClick={handleClose} color="primary">
