@@ -8,10 +8,14 @@ import { time } from "../../utils/time_constant";
 import DatePicker from "../DatePicker";
 import SelectDropDown from "../SelectDropDown";
 import { setEndDatetime, setStartDatetime } from "../../state/action";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
   container: {
     height: 40,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
@@ -36,7 +40,9 @@ const ChooseDateTime = () => {
     // e.g. startDateTime = selectedDate + startTime
     const dateString = selectedDate.toString().substring(0, 15);
     const localeString = selectedDate.toString().substring(25);
-    let startDateTime = new Date(dateString + " " + startTime + " " + localeString);
+    let startDateTime = new Date(
+      dateString + " " + startTime + " " + localeString
+    );
     let endDateTime = new Date(dateString + " " + endTime + " " + localeString);
 
     dispatch(setStartDatetime(startDateTime));

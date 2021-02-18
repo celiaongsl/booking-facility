@@ -1,22 +1,26 @@
-import { Typography } from '@material-ui/core';
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
+
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
 
 const useStyles = makeStyles(() => ({
-    Header: {
-        maxHeight: '50px',
-        width: '100%',
-    }
+  AppBarRoot: {
+    backgroundColor: "white",
+  },
 }));
 
 const Header = () => {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return(
-        <div className={classes.Header}>
-            <Typography variant="h4">Book a Room: Raffles Office</Typography>
-        </div>
-    )
-}
+  return (
+    <AppBar position="static" className={classes.AppBarRoot}>
+      <Toolbar>
+        <Typography variant="h5" color="primary">Book a Room</Typography>
+      </Toolbar>
+    </AppBar>
+  );
+};
 
 export default Header;

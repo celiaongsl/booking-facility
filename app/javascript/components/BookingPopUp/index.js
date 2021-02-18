@@ -31,9 +31,10 @@ const BookingPopUp = (props) => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
-  // Using room_id, generate the bookings for (1) room_id (2) on the date itself
 
   // act nvm la lol, just do a save and a pop-up if something was wrong
+  // if smth is wrong, do e.preventDefault() and have an error message
+
   return (
     <div>
       <Dialog
@@ -41,8 +42,8 @@ const BookingPopUp = (props) => {
         aria-labelledby="simple-dialog-title"
         open={open}
       >
-        <DialogTitle id="simple-dialog-title">
-          Book {selectedRoomData.attributes.name}
+        <DialogTitle id="simple-dialog-title" style={{textAlign: 'center', backgroundColor: '#e8eaf6'}}>
+          Booking {selectedRoomData.attributes.name}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
@@ -61,7 +62,7 @@ const BookingPopUp = (props) => {
             value={endTime}
             list={time}
           />
-          <br/>
+          <br />
           <DatePicker value={selectedDate} onChange={handleDateChange} />{" "}
         </DialogContent>
         <DialogActions>
