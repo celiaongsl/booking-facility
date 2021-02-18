@@ -1,6 +1,6 @@
 rooms = Room.create([
     {
-        name: "Floor 8 Conference Room 1",
+        name: "Conference Room 1",
         floor: 8,
         capacity: 30,
         room_type: "conference",
@@ -11,7 +11,7 @@ rooms = Room.create([
             tv: false,
         },
     },{
-        name: "Floor 8 Conference Room 2",
+        name: "Conference Room 2",
         floor: 8,
         capacity: 30,
         room_type: "conference",
@@ -34,7 +34,7 @@ rooms = Room.create([
                 tv: false
             },},
             {
-                name: "Floor 10 Small Meeting Room 2",
+                name: "Small Meeting Room 2",
                 floor: "8",
                 capacity: 10,
                 room_type: "small_meeting_room",
@@ -44,7 +44,19 @@ rooms = Room.create([
                     power_outlets: true,
                     tv: true,
                 }
-    }
+    },
+    {
+        name: "Small Meeting Room 2",
+        floor: "3",
+        capacity: 10,
+        room_type: "small_meeting_room",
+        assets: {
+            projector: true,
+            whiteboard: true,
+            power_outlets: true,
+            tv: true,
+        }
+}
 ])
 
 users = User.create([

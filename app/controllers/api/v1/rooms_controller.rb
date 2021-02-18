@@ -5,7 +5,11 @@ module Api
 
             # the initial show
             def index
-                rooms = Room.all
+                # def index
+                    # @products = Product.filter(params.slice(:floor, :capacity, :room_type))
+                  
+                # rooms = Room.all
+                rooms = Room.filter(params.slice(:floor, :capacity, :room_type,))
                 render json: RoomSerializer.new(rooms).serialized_json
             end 
 

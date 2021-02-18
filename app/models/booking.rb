@@ -3,11 +3,11 @@ class Booking < ApplicationRecord
     belongs_to :user
     belongs_to :room
 
-    validate :reservations_must_not_overlap
+    validate :bookings_must_not_overlap
 
     private
 
-    def reservations_must_not_overlap
+    def bookings_must_not_overlap
         return if self
                     .class
                     .where.not(id: id)

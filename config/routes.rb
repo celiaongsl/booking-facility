@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      # for now I don't want to do destroy for bookings
       resources :bookings
       resources :rooms, param: :slug
       resources :users

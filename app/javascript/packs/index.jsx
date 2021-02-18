@@ -1,28 +1,15 @@
-// Run this example by adding <%= javascript_pack_tag 'index' %> to the head of your layout file,
-// like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
-// of the page.
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
-
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
+import LandingPage from "../pages/LandingPage";
 
 // Things I want to try and include: Filtering by Floor, Features/Assets and Capacity
+// Might be tough to filter by assets
 // Filtering by date&time availability (how ah LOL)
+// What about moving from body into params? hmm
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <LandingPage />,
     document.body.appendChild(document.createElement('div')),
   )
 })
