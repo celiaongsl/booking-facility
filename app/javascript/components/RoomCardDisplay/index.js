@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import RoomCard from "../RoomCard";
 
-import {
-  roomTypeToImageList,
-} from "../../utils/constant";
+import { roomTypeToImageList } from "../../utils/constant";
 import { findAssetKeyReturnIconList } from "../../utils/helper";
+import BookingPopUp from "../BookingPopUp";
 
 const RoomCardDisplay = (props) => {
   const { roomsData } = props;
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <React.Fragment>
       {roomsData &&
@@ -25,10 +34,12 @@ const RoomCardDisplay = (props) => {
                 room={room}
                 imageURL={imageURL}
                 iconList={assetsIconList}
+                handleClickOpen={handleClickOpen}
               />
             </Grid>
           );
         })}
+      {open && <BookingPopUp open={open} handleClose={handleClose} />}
     </React.Fragment>
   );
 };

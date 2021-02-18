@@ -7,6 +7,7 @@ import Filter from "../components/Filter";
 import Header from "../components/Header";
 import RoomCardDisplay from "../components/RoomCardDisplay";
 import { apiURL } from "../utils/constant";
+import ChooseDateTime from "../components/ChooseDateTime";
 
 const LandingPage = () => {
   const [rooms, setRooms] = useState([]);
@@ -24,21 +25,30 @@ const LandingPage = () => {
       .catch((resp) => console.log(resp));
   }, []);
 
+  useEffect(() => {
+      // find current date and time and store into redux
+      let currentDateTime = new Date();
+      console.log(currentDateTime)
+  }, [])
+
   if (!loaded) {
     return <CircularProgress />;
   }
 
   return (
     <div>
-      <Grid container spacing={2}>
+      <Grid container spacing={5}>
         <Grid item xs={12}>
           <Header />
+        </Grid>
+        <Grid item xs={12}>
+            <ChooseDateTime />
         </Grid>
         <Grid item md={3}>
           <Filter />
         </Grid>
         <Grid item md={9} container spacing={4}>
-          <RoomCardDisplay roomsData={rooms}/>
+          <RoomCardDisplay roomsData={rooms} />
         </Grid>
       </Grid>
     </div>
