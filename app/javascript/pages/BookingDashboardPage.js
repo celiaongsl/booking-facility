@@ -15,7 +15,7 @@ import {
 } from "../utils/helper";
 import { setEndDatetime, setStartDatetime } from "../state/action";
 
-const LandingPage = () => {
+const BookingDashboardPage = () => {
   const [rooms, setRooms] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [capacityCheckbox, setCapacityCheckbox] = useState(capacity);
@@ -95,4 +95,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default BookingDashboardPage;
