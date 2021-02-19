@@ -5,8 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
-Ruby Version: 3.0.0
+* Ruby version: 3.0.0
 
 * System dependencies
 
@@ -18,6 +17,9 @@ rake db:migrate
 rake db:seed
 ```
 * Start server
-`rails s`
-Go into http://localhost:3000 to view the page!
+```
+rails s
+// Go into http://localhost:3000 to view the page!
+```
+
 * ...
