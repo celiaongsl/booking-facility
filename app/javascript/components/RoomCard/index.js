@@ -37,7 +37,7 @@ const RoomCard = (props) => {
 
   const pushToNextRoom = () => {
     // For now until I have the time to do up the detailed page... we shall leave this
-    // history.push(`/room/${slug}`);
+    // history.push(`/dashboard/room/${slug}`);
   };
 
   return (

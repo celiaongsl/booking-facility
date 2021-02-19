@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <AppBar position="static" className={classes.AppBarRoot}>
       <Toolbar>
-        <Typography variant="h5" color="primary">Book a Room</Typography>
+        <Typography variant="h5" color="primary">Book a Facility</Typography>
       </Toolbar>
     </AppBar>
   );

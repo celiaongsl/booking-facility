@@ -85,8 +85,6 @@ const BookingPopUpForm = (props) => {
               className={classes.textfieldRoot}
             />
             <DialogContentText id="alert-dialog-description">
-              {/* Capacity: {selectedRoomData.attributes.capacity} <br />
-              Floor: {selectedRoomData.attributes.floor} <br /> */}
             </DialogContentText>
             <SelectDropDown
               label="Start Time"

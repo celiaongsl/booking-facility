@@ -21,6 +21,9 @@ export const floors = { 3: false, 4: false, 8: false };
 
 export const capacity = { 1: false, 10: false, 30: false };
 
+export const NOT_LOGGED_IN = 'NOT_LOGGED_IN'
+export const LOGGED_IN = 'LOGGED_IN'
+
 export const assetToIconList = {
   tv: {
     icon: <TvRoundedIcon />,
