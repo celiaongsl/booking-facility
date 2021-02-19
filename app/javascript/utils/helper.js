@@ -29,3 +29,18 @@ export function prettyDate2(time) {
   var localeSpecificTime = time.toLocaleTimeString();
   return localeSpecificTime.replace(/:\d+ /, " ");
 }
+
+export const convertObjectIntoQueryString = ({ object, paramKey }) => {
+  // if capacity[key] === true, we add capacity[]=key in the query
+  // so if we have multiple capacity keys that are true, we need to chain it as such:
+  // ?capacity[]=1&capacity[]=30 << return this back
+
+  let queryString = "";
+  Object.keys(object).map((key) => {
+    if (object[key]) {
+      queryString = queryString + `&${paramKey}=${key}`;
+    }
+  });
+
+  return queryString;
+};

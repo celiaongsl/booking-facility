@@ -7,14 +7,19 @@ import { useDispatch } from "react-redux";
 import Filter from "../components/Filter";
 import Header from "../components/Header";
 import RoomCardDisplay from "../components/RoomCardDisplay";
-import { apiURL } from "../utils/constant";
+import { apiURL, capacity, floors } from "../utils/constant";
 import ChooseDateTime from "../components/ChooseDateTime";
-import { roundTimeQuarterHour } from "../utils/helper";
+import {
+  convertObjectIntoQueryString,
+  roundTimeQuarterHour,
+} from "../utils/helper";
 import { setEndDatetime, setStartDatetime } from "../state/action";
 
 const LandingPage = () => {
   const [rooms, setRooms] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [capacityCheckbox, setCapacityCheckbox] = useState(capacity);
+  const [floorsCheckbox, setFloorsCheckbox] = useState(floors);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,15 +38,33 @@ const LandingPage = () => {
     // find current date and time, round it to nearest 15 minutes and store into redux
     let currentDateTime = new Date();
     const startDateTime = roundTimeQuarterHour(currentDateTime);
-
-    // end date time = start date time + 1 hour
-    // const endDateTime = startDateTime.setHours(startDateTime.getHours() + 2);
     const endDateTime = new Date(startDateTime);
     endDateTime.setHours(endDateTime.getHours() + 1);
 
     dispatch(setStartDatetime(startDateTime));
     dispatch(setEndDatetime(endDateTime));
   }, []);
+
+  useEffect(() => {
+    let queryString = "?";
+    const queryFloorParams = convertObjectIntoQueryString({
+      object: floorsCheckbox,
+      paramKey: "floor[]",
+    });
+    const queryCapacityParams = convertObjectIntoQueryString({
+      object: capacityCheckbox,
+      paramKey: "capacity[]",
+    });
+
+    queryString = queryString + queryFloorParams + queryCapacityParams;
+    const url = `${apiURL}/rooms${queryString}`;
+    axios
+      .get(url)
+      .then((resp) => {
+        setRooms(resp.data.data);
+      })
+      .catch((resp) => console.log(resp));
+  }, [capacityCheckbox, floorsCheckbox]);
 
   if (!loaded) {
     return <CircularProgress />;
@@ -56,8 +79,13 @@ const LandingPage = () => {
         <Grid item xs={12} md={12}>
           <ChooseDateTime />
         </Grid>
-        <Grid item md={3}>
-          <Filter />
+        <Grid item md={3} container spacing={5}>
+          <Filter
+            capacityCheckbox={capacityCheckbox}
+            floorsCheckbox={floorsCheckbox}
+            setCapacityCheckbox={setCapacityCheckbox}
+            setFloorsCheckbox={setFloorsCheckbox}
+          />
         </Grid>
         <Grid item md={9} container spacing={4}>
           <RoomCardDisplay roomsData={rooms} />

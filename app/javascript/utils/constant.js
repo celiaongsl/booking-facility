@@ -15,6 +15,12 @@ export const bookingErrorMessage = (
     Please try another time slot or room.
   </React.Fragment>
 );
+
+// Either that or try to create an API that compiles the room data?
+export const floors = { 3: false, 4: false, 8: false };
+
+export const capacity = { 1: false, 10: false, 30: false };
+
 export const assetToIconList = {
   tv: {
     icon: <TvRoundedIcon />,

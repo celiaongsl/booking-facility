@@ -11,7 +11,7 @@ const store = createStore(Reducer);
 // Things I want to try and include: Filtering by Floor, Features/Assets and Capacity
 // Might be tough to filter by assets
 // Filtering by date&time availability (how ah LOL)
-// What about moving from body into params? hmm
+// Maybe try out room availability next time
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
