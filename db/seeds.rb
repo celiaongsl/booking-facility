@@ -71,14 +71,11 @@ rooms = Room.create([
 
 users = User.create([
     {
+        # password: '123123' but just seed one here, else you can create your own!
         first_name: 'Tach',
         last_name: 'Anka',
-        email: 'tach_anka@email.com'
-    },
-    {
-        first_name: 'Jett',
-        last_name: 'Fighter',
-        email: 'jett_fighter@email.com'
+        email: 'tach_anka@email.com',
+        password_digest: '$2a$12$VJZ6sP0CKugeG015E8.aeenGw1kTctaUPQ73/FhMpW10vGq.6XsZi'
     }
 ])
 
