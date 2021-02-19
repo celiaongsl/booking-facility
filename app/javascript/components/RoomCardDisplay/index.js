@@ -73,8 +73,6 @@ const RoomCardDisplay = (props) => {
     setBooking({ ...booking, [e.target.name]: e.target.value });
   };
 
-  //   console.log(booking);
-  //   console.log("hello booking");
   return (
     <React.Fragment>
       {roomsData &&
