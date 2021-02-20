@@ -24,17 +24,14 @@ const useStyles = makeStyles({
   },
 });
 
-const RegisterContainer = (props) => {
+const LoginContainer = (props) => {
   const classes = useStyles();
   const { handleSuccesssfulAuth } = props;
   const [state, setState] = useState({
-    first_name: "",
-    last_name: "",
     email: "",
     password: "",
-    password_confirmation: "",
   });
-  const [registrationErrors, setRegistrationErrors] = useState("");
+  const [loginErrors, setLoginErrors] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,13 +45,13 @@ const RegisterContainer = (props) => {
     const credentials = { withCredentials: true };
 
     axios
-      .post("http://localhost:3000/api/v1/registrations", userData, credentials)
+      .post("http://localhost:3000/api/v1/sessions", userData, credentials)
       .then((res) => {
-        if (res.data.status === "created") handleSuccesssfulAuth(res.data);
+        if (res.data.logged_in) handleSuccesssfulAuth(res.data);
       })
       .catch((error) => {
-        console.log("registration error", error);
-        setRegistrationErrors(error);
+        console.log("login error", error);
+        setLoginErrors(error);
       });
   };
 
@@ -66,26 +63,9 @@ const RegisterContainer = (props) => {
     <div className={classes.Div}>
       <Paper elevation={3} className={classes.paperRoot}>
         <Typography variant="h4" style={{ textAlign: "center" }}>
-          Sign Up
+          Login
         </Typography>
         <form onSubmit={handleSubmit}>
-        <TextField
-            name="first_name"
-            placeholder="First Name"
-            value={state.first_name}
-            onChange={handleChange}
-            required
-            className={classes.textFieldRoot}
-          />
-          <TextField
-            name="last_name"
-            placeholder="Last Name"
-            value={state.last_name}
-            onChange={handleChange}
-            required
-            className={classes.textFieldRoot}
-          />
-          <br />
           <TextField
             type="email"
             name="email"
@@ -106,18 +86,8 @@ const RegisterContainer = (props) => {
             className={classes.textFieldRoot}
           />
           <br />
-          <TextField
-            type="password"
-            name="password_confirmation"
-            placeholder="Confirm Password"
-            value={state.password_confirmation}
-            onChange={handleChange}
-            required
-            className={classes.textFieldRoot}
-          />
-          <br />
           <Button type="submit" className={classes.buttonRoot} variant="contained">
-            Register
+            Login
           </Button>
         </form>
       </Paper>
@@ -125,4 +95,4 @@ const RegisterContainer = (props) => {
   );
 };
 
-export default RegisterContainer;
+export default LoginContainer;
