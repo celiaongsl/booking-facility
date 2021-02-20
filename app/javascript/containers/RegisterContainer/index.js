@@ -34,6 +34,7 @@ const RegisterContainer = (props) => {
     password: "",
     password_confirmation: "",
   });
+  
   const [registrationErrors, setRegistrationErrors] = useState("");
 
   const handleSubmit = (e) => {

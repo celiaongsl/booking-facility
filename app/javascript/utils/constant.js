@@ -49,4 +49,4 @@ export const roomTypeToImageList = {
   sleeping_pod: SleepingPodImage,
 };
 
-export const apiURL = "/api/v1";
+export const apiURL = "http://localhost:3000/api/v1";

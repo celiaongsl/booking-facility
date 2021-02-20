@@ -15,13 +15,17 @@ import {
 } from "../utils/helper";
 import { setEndDatetime, setStartDatetime } from "../state/action";
 
-const BookingDashboardPage = () => {
+const BookingDashboardPage = (props) => {
+  const {loggedInStatus, user} = props;
   const [rooms, setRooms] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [capacityCheckbox, setCapacityCheckbox] = useState(capacity);
   const [floorsCheckbox, setFloorsCheckbox] = useState(floors);
   const dispatch = useDispatch();
 
+  console.log(loggedInStatus)
+  console.log(user)
+  console.log("do i have these details...?")
   useEffect(() => {
     // Get all the rooms in database
     const url = `${apiURL}/rooms`;
