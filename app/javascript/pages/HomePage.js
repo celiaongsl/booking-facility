@@ -1,9 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import RegisterContainer from "../containers/RegisterContainer";
+import RegisterContainer from "../containers/HomePageContainers/RegisterContainer";
 
 import HomePageImage from "../assets/images/homepage.jpg";
-import LoginContainer from "../containers/LoginContainer";
+import LoginContainer from "../containers/HomePageContainers/LoginContainer";
 import { Button } from "@material-ui/core";
 import axios from "axios";
 import { apiURL } from "../utils/constant";

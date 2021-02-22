@@ -4,11 +4,11 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-import Filter from "../containers/LandingPageContainers/Filter";
+import Filter from "../containers/BookingDashboardContainers/Filter";
 import Header from "../components/Header";
-import RoomCardDisplay from "../containers/LandingPageContainers/RoomCardDisplay";
+import RoomCardDisplay from "../containers/BookingDashboardContainers/RoomCardDisplay";
 import { apiURL, capacity, floors } from "../utils/constant";
-import ChooseDateTime from "../containers/LandingPageContainers/ChooseDateTime";
+import ChooseDateTime from "../containers/BookingDashboardContainers/ChooseDateTime";
 import {
   convertObjectIntoQueryString,
   roundTimeQuarterHour,
