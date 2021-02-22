@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { prettyDate2 } from "../../utils/helper";
-import { time } from "../../utils/time_constant";
+import { prettyDate2 } from "../../../utils/helper";
+import { time } from "../../../utils/time_constant";
 
-import DatePicker from "../DatePicker";
-import SelectDropDown from "../SelectDropDown";
-import { setEndDatetime, setStartDatetime } from "../../state/action";
+import DatePicker from "../../../components/DatePicker";
+import SelectDropDown from "../../../components/SelectDropDown";
+import { setEndDatetime, setStartDatetime } from "../../../state/action";
 import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
