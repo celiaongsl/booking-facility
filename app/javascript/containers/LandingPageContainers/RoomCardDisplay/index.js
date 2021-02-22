@@ -3,15 +3,15 @@ import { useSelector } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
-import RoomCard from "../RoomCard";
+import RoomCard from "../../../components/RoomCard";
 
 import {
   apiURL,
   bookingErrorMessage,
   roomTypeToImageList,
-} from "../../utils/constant";
-import { findAssetKeyReturnIconList } from "../../utils/helper";
-import AxiosHelper from "../../utils/AxiosHelper";
+} from "../../../utils/constant";
+import { findAssetKeyReturnIconList } from "../../../utils/helper";
+import AxiosHelper from "../../../utils/AxiosHelper";
 
 import BookingPopUpForm from "../BookingPopUpForm";
 
@@ -54,16 +54,13 @@ const RoomCardDisplay = (props) => {
     const url = `${apiURL}/bookings`;
     AxiosHelper();
 
-    // NOTE TO SELF: You need to set up your timestamp as such: 2021-02-18T23:00:00.000000+08:00
-    // NOTICE THE EXTRA 3 ZEROES. Else there'll be no conflict for you lmao...
-
     axios
       .post(url, { ...booking })
-      .then((resp) => {
+      .then(() => {
         alert("Booking Confirmed!");
         handleClose();
       })
-      .catch((resp) => {
+      .catch(() => {
         setErrorMessage(bookingErrorMessage);
       });
   };
