@@ -11,11 +11,11 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 
-import SelectDropDown from "../SelectDropDown";
+import SelectDropDown from "../../../components/SelectDropDown";
 
-import { prettyDate2 } from "../../utils/helper";
-import { time } from "../../utils/time_constant";
-import DatePicker from "../DatePicker";
+import { prettyDate2 } from "../../../utils/helper";
+import { time } from "../../../utils/time_constant";
+import DatePicker from "../../../components/DatePicker";
 import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
