@@ -36,6 +36,7 @@ exports[`<FilterCheckboxes /> renders the component with floor details 1`] = `
         <span
           aria-disabled="false"
           class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+          data-testid="checkbox-0"
         >
           <span
             class="MuiIconButton-label"
@@ -74,6 +75,7 @@ exports[`<FilterCheckboxes /> renders the component with floor details 1`] = `
         <span
           aria-disabled="false"
           class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+          data-testid="checkbox-1"
         >
           <span
             class="MuiIconButton-label"
@@ -112,6 +114,7 @@ exports[`<FilterCheckboxes /> renders the component with floor details 1`] = `
         <span
           aria-disabled="false"
           class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+          data-testid="checkbox-2"
         >
           <span
             class="MuiIconButton-label"

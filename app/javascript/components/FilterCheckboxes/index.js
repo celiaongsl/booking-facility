@@ -34,8 +34,8 @@ const FilterCheckboxes = (props) => {
                 key={index}
                 control={
                   <Checkbox
-                    // data-testid="test-checkbox"
-                    // data-testid={index}
+                  data-testid={`checkbox-${index}`}
+                    // inputProps={{ 'data-testid': `clickable-checkbox-${index}` }}
                     checked={checkboxList[key]}
                     onChange={(event) =>
                       setCheckboxList({
