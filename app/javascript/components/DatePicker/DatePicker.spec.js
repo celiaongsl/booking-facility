@@ -13,16 +13,13 @@ describe("<DatePicker />", () => {
   };
 
   it("renders the component", () => {
-    const container = render(<DatePicker />);
-    expect(container.firstChild).toMatchSnapshot();
+    const { asFragment } = render(<DatePicker />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   test("it should display the right date", () => {
     const { datepickerInput } = setup();
-
-    console.log(datepickerInput.value)
     fireEvent.change(datepickerInput, { target: { value: "10-12-2020" } });
     expect(datepickerInput.value).toBe("10-12-2020");
-    console.log(datepickerInput.value)
   });
 });
