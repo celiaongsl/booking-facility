@@ -25,6 +25,7 @@ const DatePicker = (props) => {
         format="MM/dd/yyyy"
         margin="normal"
         label="Booking Date"
+        aria-label="date-picker"
         id="date-picker-inline"
         value={value}
         onChange={onChange}
