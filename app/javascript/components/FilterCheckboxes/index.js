@@ -27,13 +27,15 @@ const FilterCheckboxes = (props) => {
     <React.Fragment>
       <Typography variant="h6">{title}</Typography>
       <FormControl component="fieldset" className={classes.formControl}>
-        <FormGroup>
+        <FormGroup data-testid="checkbox-list">
           {Object.keys(checkboxList).map((key, index) => {
             return (
               <FormControlLabel
                 key={index}
                 control={
                   <Checkbox
+                    // data-testid="test-checkbox"
+                    // data-testid={index}
                     checked={checkboxList[key]}
                     onChange={(event) =>
                       setCheckboxList({
