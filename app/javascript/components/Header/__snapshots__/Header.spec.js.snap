@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders the component 1`] = `
+<DocumentFragment>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary makeStyles-AppBarRoot-1 MuiPaper-elevation4"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-colorPrimary"
+      >
+        Book a Room
+      </h5>
+    </div>
+  </header>
+</DocumentFragment>
+`;
