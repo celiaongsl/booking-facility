@@ -44,7 +44,7 @@ const RoomCard = (props) => {
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia className={classes.media} image={imageURL} title={name} />
-        <CardContent onClick={pushToNextRoom}>
+        <CardContent onClick={pushToNextRoom} data-testid="card-content">
           <Typography gutterBottom variant="h5" component="h2">
             {name}
           </Typography>

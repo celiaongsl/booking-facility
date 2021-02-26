@@ -12,10 +12,12 @@ exports[`<RoomCard /> renders the component 1`] = `
     >
       <div
         class="MuiCardMedia-root makeStyles-media-2"
+        style="background-image: url(sleeping_pod.jpg);"
         title="Sleeping Pod 1"
       />
       <div
         class="MuiCardContent-root"
+        data-testid="card-content"
       >
         <h2
           class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
