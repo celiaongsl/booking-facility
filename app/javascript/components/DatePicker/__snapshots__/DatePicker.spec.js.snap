@@ -22,7 +22,7 @@ exports[`<DatePicker /> renders the component 1`] = `
         class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd"
         id="date-picker-inline"
         type="text"
-        value="02/26/2021"
+        value="02/27/2021"
       />
       <div
         class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
