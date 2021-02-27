@@ -12,14 +12,17 @@ export const findAssetKeyReturnIconList = (assets) => {
 };
 
 export const roundTimeQuarterHour = (time) => {
-  var timeToReturn = new Date(time);
+  if (time) {
+    var timeToReturn = new Date(time);
 
-  timeToReturn.setMilliseconds(
-    Math.round(timeToReturn.getMilliseconds() / 1000) * 1000
-  );
-  timeToReturn.setSeconds(Math.round(timeToReturn.getSeconds() / 60) * 60);
-  timeToReturn.setMinutes(Math.round(timeToReturn.getMinutes() / 15) * 15);
-  return timeToReturn;
+    timeToReturn.setMilliseconds(
+      Math.round(timeToReturn.getMilliseconds() / 1000) * 1000
+    );
+    timeToReturn.setSeconds(Math.round(timeToReturn.getSeconds() / 60) * 60);
+    timeToReturn.setMinutes(Math.round(timeToReturn.getMinutes() / 15) * 15);
+    return timeToReturn;
+  }
+  return "";
 };
 
 // Take "Thu Feb 18 2021 19:15:00 GMT+0800 (Singapore Standard Time)"

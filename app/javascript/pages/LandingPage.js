@@ -68,7 +68,6 @@ const LandingPage = () => {
 
   if (!loaded) {
     return <CircularProgress />;
-    // return "Loading..."
   }
 
   return (

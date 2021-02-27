@@ -42,6 +42,10 @@ const initState = {
   endDateTime: null,
 };
 
+// Issue with testing axios here because useEffect is triggered twice...
+// So I'm never able to find "return(...)" if I pass an id
+// HOW?
+
 describe("<LandingPage />", () => {
   it("displays <CircularProgress /> while fetching rooms", async () => {
     const { getByRole } = renderWithState(<LandingPage />, { initState });
