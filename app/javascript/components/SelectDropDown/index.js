@@ -26,10 +26,14 @@ const SelectDropDown = (props) => {
         id="demo-simple-select"
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        inputProps={{ "data-testid": "select" }}
       >
         {list.map((item) => {
           return (
-            <MenuItem key={item.value} value={item.value}>
+            <MenuItem
+              key={item.value}
+              value={item.value}
+            >
               {item.label}
             </MenuItem>
           );
