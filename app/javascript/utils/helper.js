@@ -20,6 +20,7 @@ export const roundTimeQuarterHour = (time) => {
     );
     timeToReturn.setSeconds(Math.round(timeToReturn.getSeconds() / 60) * 60);
     timeToReturn.setMinutes(Math.round(timeToReturn.getMinutes() / 15) * 15);
+    // Maybe consider a .toString()? See if it'll impact
     return timeToReturn;
   }
   return "";
@@ -28,9 +29,13 @@ export const roundTimeQuarterHour = (time) => {
 // Take "Thu Feb 18 2021 19:15:00 GMT+0800 (Singapore Standard Time)"
 // And shorten to "19:15:00" only
 export function prettyDate2(time) {
-  if (typeof time === "string") time = new Date(time);
-  var localeSpecificTime = time.toLocaleTimeString();
-  return localeSpecificTime.replace(/:\d+ /, " ");
+  if (time) {
+    if (typeof time === "string") time = new Date(time);
+    // MAYBE: Want to add smth to check if it's an invalid date? So it returns "" instead?
+    var localeSpecificTime = time.toLocaleTimeString();
+    return localeSpecificTime.replace(/:\d+ /, " ");
+  }
+  return "";
 }
 
 export const convertObjectIntoQueryString = ({ object, paramKey }) => {
